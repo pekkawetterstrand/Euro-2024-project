@@ -53,27 +53,51 @@
     <div class="game-list" id="game-list">
         <!-- Games will be added here -->
     </div>
-    <script>
-        const games = [
-            { team1: 'Team A', team2: 'Team B', date: '2024-06-12' },
-            { team1: 'Team C', team2: 'Team D', date: '2024-06-13' },
-            // Add all games here
-        ];
+   <script>
+    const games = [
+        { team1: 'Germany', team2: 'France', date: '2024-06-14' },
+        { team1: 'Italy', team2: 'Spain', date: '2024-06-15' },
+        { team1: 'Portugal', team2: 'Switzerland', date: '2024-06-16' },
+        { team1: 'England', team2: 'Croatia', date: '2024-06-17' },
+        { team1: 'Netherlands', team2: 'Ukraine', date: '2024-06-18' },
+        { team1: 'Belgium', team2: 'Russia', date: '2024-06-19' },
+        { team1: 'Austria', team2: 'North Macedonia', date: '2024-06-20' },
+        { team1: 'Denmark', team2: 'Finland', date: '2024-06-21' },
+        { team1: 'Czech Republic', team2: 'Scotland', date: '2024-06-22' },
+        { team1: 'Poland', team2: 'Slovakia', date: '2024-06-23' },
+        { team1: 'Spain', team2: 'Sweden', date: '2024-06-24' },
+        { team1: 'Hungary', team2: 'Portugal', date: '2024-06-25' },
+        { team1: 'France', team2: 'Germany', date: '2024-06-26' },
+        { team1: 'Italy', team2: 'Wales', date: '2024-06-27' },
+        { team1: 'Switzerland', team2: 'Turkey', date: '2024-06-28' },
+        { team1: 'Ukraine', team2: 'Austria', date: '2024-06-29' },
+        { team1: 'Netherlands', team2: 'North Macedonia', date: '2024-06-30' },
+        { team1: 'Russia', team2: 'Denmark', date: '2024-07-01' },
+        { team1: 'Finland', team2: 'Belgium', date: '2024-07-02' },
+        { team1: 'Croatia', team2: 'Czech Republic', date: '2024-07-03' },
+        { team1: 'England', team2: 'Scotland', date: '2024-07-04' },
+        { team1: 'Sweden', team2: 'Poland', date: '2024-07-05' },
+        { team1: 'Slovakia', team2: 'Spain', date: '2024-07-06' },
+        { team1: 'Portugal', team2: 'France', date: '2024-07-07' },
+        { team1: 'Germany', team2: 'Hungary', date: '2024-07-08' }
+        // Add additional knockout stage games later
+    ];
 
-        const gameList = document.getElementById('game-list');
+    const gameList = document.getElementById('game-list');
 
-        games.forEach(game => {
-            const gameDiv = document.createElement('div');
-            gameDiv.classList.add('game');
-            gameDiv.innerHTML = `
-                <div>${game.team1} vs ${game.team2}</div>
-                <div>${game.date}</div>
-                <input type="text" placeholder="Score for ${game.team1}">
-                <input type="text" placeholder="Score for ${game.team2}">
-                <button>Submit Guess</button>
-            `;
-            gameList.appendChild(gameDiv);
-        });
-    </script>
+    games.forEach(game => {
+        const gameDiv = document.createElement('div');
+        gameDiv.classList.add('game');
+        gameDiv.innerHTML = `
+            <div>${game.team1} vs ${game.team2}</div>
+            <div>${game.date}</div>
+            <input type="text" placeholder="Score for ${game.team1}">
+            <input type="text" placeholder="Score for ${game.team2}">
+            <button>Submit Guess</button>
+        `;
+        gameList.appendChild(gameDiv);
+    });
+</script>
+
 </body>
 </html>
