@@ -167,14 +167,14 @@
         gameDiv.classList.add('game');
         const gameKey = `${game.team1} vs ${game.team2}`;
         gameDiv.setAttribute('data-key', gameKey);
-        gameDiv.innerHTML = `
+        gameDiv.innerHTML = 
 <div><span class="flag-icon flag-icon-${getCountryCode(game.team1).toLowerCase()}"></span> ${game.team1} vs <span class="flag-icon flag-icon-${getCountryCode(game.team2).toLowerCase()}"></span> ${game.team2}</div>
             <div>${game.date}</div>
             <input type="text" placeholder="Score for ${game.team1}">
             <input type="text" placeholder="Score for ${game.team2}">
             <button>Submit Guess</button>
             <div class="error-message" style="color: red; display: none;"></div>
-        `;
+        ;
         const button = gameDiv.querySelector('button');
         button.addEventListener('click', () => {
             const inputs = gameDiv.querySelectorAll('input');
