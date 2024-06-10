@@ -6,43 +6,69 @@
     <title>Euro 2024 Game Results Guessing</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 0;
             background-color: #f4f4f4;
+            color: #333;
         }
         header {
-            text-align: center;
-            padding: 20px 0;
             background-color: #2c3e50;
             color: white;
-        }
-        .game-list {
-            max-width: 800px;
-            margin: 20px auto;
-            background: white;
             padding: 20px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
         }
         .game {
             display: flex;
             justify-content: space-between;
-            padding: 10px 0;
+            align-items: center;
+            padding: 15px 0;
             border-bottom: 1px solid #ddd;
         }
         .game:last-child {
             border-bottom: none;
         }
-        .game input {
-            width: 50px;
+        .game div {
+            flex: 1;
             text-align: center;
         }
+        .game input {
+            width: 50px;
+            padding: 5px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin: 0 10px;
+        }
         .game button {
-            padding: 5px 10px;
+            padding: 8px 12px;
             background-color: #27ae60;
             color: white;
             border: none;
+            border-radius: 4px;
             cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .game button:hover {
+            background-color: #218c53;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #2c3e50;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
@@ -50,54 +76,98 @@
     <header>
         <h1>Euro 2024 Game Results Guessing</h1>
     </header>
-    <div class="game-list" id="game-list">
+    <div class="container" id="game-list">
         <!-- Games will be added here -->
     </div>
-   <script>
-    const games = [
-        { team1: 'Germany', team2: 'France', date: '2024-06-14' },
-        { team1: 'Italy', team2: 'Spain', date: '2024-06-15' },
-        { team1: 'Portugal', team2: 'Switzerland', date: '2024-06-16' },
-        { team1: 'England', team2: 'Croatia', date: '2024-06-17' },
-        { team1: 'Netherlands', team2: 'Ukraine', date: '2024-06-18' },
-        { team1: 'Belgium', team2: 'Russia', date: '2024-06-19' },
-        { team1: 'Austria', team2: 'North Macedonia', date: '2024-06-20' },
-        { team1: 'Denmark', team2: 'Finland', date: '2024-06-21' },
-        { team1: 'Czech Republic', team2: 'Scotland', date: '2024-06-22' },
-        { team1: 'Poland', team2: 'Slovakia', date: '2024-06-23' },
-        { team1: 'Spain', team2: 'Sweden', date: '2024-06-24' },
-        { team1: 'Hungary', team2: 'Portugal', date: '2024-06-25' },
-        { team1: 'France', team2: 'Germany', date: '2024-06-26' },
-        { team1: 'Italy', team2: 'Wales', date: '2024-06-27' },
-        { team1: 'Switzerland', team2: 'Turkey', date: '2024-06-28' },
-        { team1: 'Ukraine', team2: 'Austria', date: '2024-06-29' },
-        { team1: 'Netherlands', team2: 'North Macedonia', date: '2024-06-30' },
-        { team1: 'Russia', team2: 'Denmark', date: '2024-07-01' },
-        { team1: 'Finland', team2: 'Belgium', date: '2024-07-02' },
-        { team1: 'Croatia', team2: 'Czech Republic', date: '2024-07-03' },
-        { team1: 'England', team2: 'Scotland', date: '2024-07-04' },
-        { team1: 'Sweden', team2: 'Poland', date: '2024-07-05' },
-        { team1: 'Slovakia', team2: 'Spain', date: '2024-07-06' },
-        { team1: 'Portugal', team2: 'France', date: '2024-07-07' },
-        { team1: 'Germany', team2: 'Hungary', date: '2024-07-08' }
-        // Add additional knockout stage games later
-    ];
+    <footer>
+        <p>© 2024 Euro 2024 Guessing Game</p>
+    </footer>
+    <script>
+        const games = [
+            { team1: 'Germany', team2: 'France', date: '2024-06-14' },
+            { team1: 'Italy', team2: 'Spain', date: '2024-06-15' },
+            { team1: 'Portugal', team2: 'Switzerland', date: '2024-06-16' },
+            { team1: 'England', team2: 'Croatia', date: '2024-06-17' },
+            { team1: 'Netherlands', team2: 'Ukraine', date: '2024-06-18' },
+            { team1: 'Belgium', team2: 'Russia', date: '2024-06-19' },
+            { team1: 'Austria', team2: 'North Macedonia', date: '2024-06-20' },
+            { team1: 'Denmark', team2: 'Finland', date: '2024-06-21' },
+            { team1: 'Czech Republic', team2: 'Scotland', date: '2024-06-22' },
+            { team1: 'Poland', team2: 'Slovakia', date: '2024-06-23' },
+            { team1: 'Spain', team2: 'Sweden', date: '2024-06-24' },
+            { team1: 'Hungary', team2: 'Portugal', date: '2024-06-25' },
+            { team1: 'France', team2: 'Germany', date: '2024-06-26' },
+            { team1: 'Italy', team2: 'Wales', date: '2024-06-27' },
+            { team1: 'Switzerland', team2: 'Turkey', date: '2024-06-28' },
+            { team1: 'Ukraine', team2: 'Austria', date: '2024-06-29' },
+            { team1: 'Netherlands', team2: 'North Macedonia', date: '2024-06-30' },
+            { team1: 'Russia', team2: 'Denmark', date: '2024-07-01' },
+            { team1: 'Finland', team2: 'Belgium', date: '2024-07-02' },
+            { team1: 'Croatia', team2: 'Czech Republic', date: '2024-07-03' },
+            { team1: 'England', team2: 'Scotland', date: '2024-07-04' },
+            { team1: 'Sweden', team2: 'Poland', date: '2024-07-05' },
+            { team1: 'Slovakia', team2: 'Spain', date: '2024-07-06' },
+            { team1: 'Portugal', team2: 'France', date: '2024-07-07' },
+            { team1: 'Germany', team2: 'Hungary', date: '2024-07-08' }
+            // Add additional knockout stage games later
+        ];
 
-    const gameList = document.getElementById('game-list');
+        const gameList = document.getElementById('game-list');
 
-    games.forEach(game => {
-        const gameDiv = document.createElement('div');
-        gameDiv.classList.add('game');
-        gameDiv.innerHTML = `
-            <div>${game.team1} vs ${game.team2}</div>
-            <div>${game.date}</div>
-            <input type="text" placeholder="Score for ${game.team1}">
-            <input type="text" placeholder="Score for ${game.team2}">
-            <button>Submit Guess</button>
-        `;
-        gameList.appendChild(gameDiv);
-    });
-</script>
+        const loadGuesses = () => {
+            const guesses = localStorage.getItem('guesses');
+            return guesses ? JSON.parse(guesses) : {};
+        };
 
+        const saveGuess = (game, score1, score2) => {
+            const guesses = loadGuesses();
+            guesses[`${game.team1} vs ${game.team2}`] = { score1, score2 };
+            localStorage.setItem('guesses', JSON.stringify(guesses));
+        };
+
+        const displayGuesses = () => {
+            const guesses = loadGuesses();
+            for (const game of games) {
+                const key = `${game.team1} vs ${game.team2}`;
+                if (guesses[key]) {
+                    const gameDiv = document.querySelector(`.game[data-key="${key}"]`);
+                    if (gameDiv) {
+                        const inputs = gameDiv.querySelectorAll('input');
+                        inputs[0].value = guesses[key].score1;
+                        inputs[1].value = guesses[key].score2;
+                    }
+                }
+            }
+        };
+
+        games.forEach(game => {
+            const gameDiv = document.createElement('div');
+            gameDiv.classList.add('game');
+            const gameKey = `${game.team1} vs ${game.team2}`;
+            gameDiv.setAttribute('data-key', gameKey);
+            gameDiv.innerHTML = `
+                <div>${game.team1} vs ${game.team2}</div>
+                <div>${game.date}</div>
+                <input type="text" placeholder="Score for ${game.team1}">
+                <input type="text" placeholder="Score for ${game.team2}">
+                <button>Submit Guess</button>
+            `;
+            const button = gameDiv.querySelector('button');
+            button.addEventListener('click', () => {
+                const inputs = gameDiv.querySelectorAll('input');
+                const score1 = inputs[0].value;
+                const score2 = inputs[1].value;
+                if (isNaN(score1) || isNaN(score2) || score1 === '' || score2 === '') {
+                    alert('Please enter valid scores');
+                } else {
+                    saveGuess(game, score1, score2);
+                    alert('Guess submitted!');
+                }
+            });
+            gameList.appendChild(gameDiv);
+        });
+
+        displayGuesses();
+    </script>
 </body>
 </html>
