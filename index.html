@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
     <title>Euro 2024 Game Results Guessing</title>
     <style>
         body {
@@ -194,6 +195,27 @@
     });
 
     displayGuesses();
+       function getCountryCode(countryName) {
+        // Here you can implement a function to map country names to their corresponding ISO 3166-1 alpha-2 codes
+        // For simplicity, I'll provide a basic implementation for demonstration
+        switch(countryName.toLowerCase()) {
+            case 'germany':
+                return 'de';
+            case 'france':
+                return 'fr';
+            case 'italy':
+                return 'it';
+            case 'spain':
+                return 'es';
+            case 'croatia':
+                return 'cr';
+            case 'belgia':
+                return 'be';
+            // Add more cases for other countries as needed
+            default:
+                return 'unknown';
+        }
+    }
 </script>
 
 
