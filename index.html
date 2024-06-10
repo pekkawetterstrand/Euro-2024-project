@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Euro 2024 Game Results Guessing</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        header {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #2c3e50;
+            color: white;
+        }
+        .game-list {
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .game {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .game:last-child {
+            border-bottom: none;
+        }
+        .game input {
+            width: 50px;
+            text-align: center;
+        }
+        .game button {
+            padding: 5px 10px;
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Euro 2024 Game Results Guessing</h1>
+    </header>
+    <div class="game-list" id="game-list">
+        <!-- Games will be added here -->
+    </div>
+    <script>
+        const games = [
+            { team1: 'Team A', team2: 'Team B', date: '2024-06-12' },
+            { team1: 'Team C', team2: 'Team D', date: '2024-06-13' },
+            // Add all games here
+        ];
+
+        const gameList = document.getElementById('game-list');
+
+        games.forEach(game => {
+            const gameDiv = document.createElement('div');
+            gameDiv.classList.add('game');
+            gameDiv.innerHTML = `
+                <div>${game.team1} vs ${game.team2}</div>
+                <div>${game.date}</div>
+                <input type="text" placeholder="Score for ${game.team1}">
+                <input type="text" placeholder="Score for ${game.team2}">
+                <button>Submit Guess</button>
+            `;
+            gameList.appendChild(gameDiv);
+        });
+    </script>
+</body>
+</html>
