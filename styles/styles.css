@@ -1,8 +1,9 @@
 body {
     font-family: Arial, sans-serif;
-    background-image: url('https://assets-webp.khelnow.com/d7293de2fa93b29528da214253f1d8d0/news/uploads/2023/12/UEFA-Euro-2024.jpeg'); /* Replace with the actual URL of your background image */
+    background-image: url('https://example.com/football-background.jpg'); /* Replace with the actual URL of your background image */
     background-size: cover;
-    background-position: center;
+    background-attachment: fixed;
+    background-position: center bottom; /* Adjusted to position the background */
     background-repeat: no-repeat;
     color: white;
     margin: 0;
