@@ -80,3 +80,9 @@ button:hover {
 .flag-icon {
     margin-right: 10px;
 }
+
+/* New CSS for the goal input fields */
+.goal-input {
+    width: 40px; /* Adjust the width for 2 digits */
+    text-align: center;
+}
