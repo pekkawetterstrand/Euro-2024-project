@@ -1,0 +1,21 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.game {
+    margin-bottom: 20px;
+}
+
+.error-message {
+    color: red;
+}
+
+.hidden {
+    display: none;
+}
