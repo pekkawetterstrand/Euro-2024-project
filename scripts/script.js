@@ -108,5 +108,12 @@ document.addEventListener('DOMContentLoaded', () => {
         gameList.appendChild(gameDiv);
     });
 
+    // Check if a nickname is already stored and display the game page if it is
+    const storedNickname = localStorage.getItem('nickname');
+    if (storedNickname) {
+        registrationPage.classList.add('hidden');
+        gamePage.classList.remove('hidden');
+    }
+
     displayGuesses();
 });
