@@ -45,19 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const registrationError = document.getElementById('registration-error');
     const gameList = document.getElementById('game-list');
 
-    registrationForm.addEventListener('submit', (event) => {
-        event.preventDefault();
-        const nickname = document.getElementById('nickname').value.trim();
-        if (nickname) {
-            localStorage.setItem('nickname', nickname);
-            registrationPage.classList.add('hidden');
-            gamePage.classList.remove('hidden');
-        } else {
-            registrationError.textContent = 'Please enter a valid name or nickname.';
-            registrationError.style.display = 'block';
-        }
-    });
-
     const loadGuesses = () => {
         const guesses = localStorage.getItem('guesses');
         return guesses ? JSON.parse(guesses) : {};
@@ -118,8 +105,8 @@ document.addEventListener('DOMContentLoaded', () => {
         gameDiv.innerHTML = `
             <div><span class="flag-icon flag-icon-${getCountryCode(game.team1).toLowerCase()}"></span> ${game.team1} vs <span class="flag-icon flag-icon-${getCountryCode(game.team2).toLowerCase()}"></span> ${game.team2}</div>
             <div>${game.date}</div>
-            <input type="text" placeholder="Score for ${game.team1}">
-            <input type="text" placeholder="Score for ${game.team2}">
+            <input type="text" class="goal-input" placeholder="Score for ${game.team1}">
+            <input type="text" class="goal-input" placeholder="Score for ${game.team2}">
             <button>Submit Guess</button>
             <div class="error-message" style="color: red; display: none;"></div>
         `;
@@ -142,5 +129,25 @@ document.addEventListener('DOMContentLoaded', () => {
         gameList.appendChild(gameDiv);
     });
 
+    // Check if a nickname is already stored and display the game page if it is
+    const storedNickname = localStorage.getItem('nickname');
+    if (storedNickname) {
+        registrationPage.classList.add('hidden');
+        gamePage.classList.remove('hidden');
+    }
+
     displayGuesses();
+
+    registrationForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const nickname = document.getElementById('nickname').value.trim();
+        if (nickname) {
+            localStorage.setItem('nickname', nickname);
+            registrationPage.classList.add('hidden');
+            gamePage.classList.remove('hidden');
+        } else {
+            registrationError.textContent = 'Please enter a valid name or nickname.';
+            registrationError.style.display = 'block';
+        }
+    });
 });
