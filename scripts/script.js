@@ -11,19 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const registrationError = document.getElementById('registration-error');
     const gameList = document.getElementById('game-list');
 
-    registrationForm.addEventListener('submit', (event) => {
-        event.preventDefault();
-        const nickname = document.getElementById('nickname').value.trim();
-        if (nickname) {
-            localStorage.setItem('nickname', nickname);
-            registrationPage.classList.add('hidden');
-            gamePage.classList.remove('hidden');
-        } else {
-            registrationError.textContent = 'Please enter a valid name or nickname.';
-            registrationError.style.display = 'block';
-        }
-    });
-
     const loadGuesses = () => {
         const guesses = localStorage.getItem('guesses');
         return guesses ? JSON.parse(guesses) : {};
@@ -116,4 +103,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     displayGuesses();
+
+    registrationForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const nickname = document.getElementById('nickname').value.trim();
+        if (nickname) {
+            localStorage.setItem('nickname', nickname);
+            registrationPage.classList.add('hidden');
+            gamePage.classList.remove('hidden');
+        } else {
+            registrationError.textContent = 'Please enter a valid name or nickname.';
+            registrationError.style.display = 'block';
+        }
+    });
 });
