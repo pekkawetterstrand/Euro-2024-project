@@ -3,185 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
     <title>Euro 2024 Game Results Guessing</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-        header {
-            background-color: #2c3e50;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            font-family: Arial, sans-serif;
         }
         .container {
-            max-width: 900px;
-            margin: 30px auto;
+            max-width: 800px;
+            margin: 0 auto;
             padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
         }
         .game {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
         }
-        .game:last-child {
-            border-bottom: none;
+        .error-message {
+            color: red;
         }
-        .game div {
-            flex: 1;
-            text-align: center;
-        }
-        .game input {
-            width: 50px;
-            padding: 5px;
-            text-align: center;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            margin: 0 10px;
-        }
-        .game button {
-            padding: 8px 12px;
-            background-color: #27ae60;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        .game button:hover {
-            background-color: #218c53;
-        }
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #2c3e50;
-            color: white;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+        .hidden {
+            display: none;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Euro 2024 Game Results Guessing</h1>
-    </header>
-    <div class="container" id="game-list">
-        <!-- Games will be added here -->
+    <div class="container">
+        <div id="registration-page">
+            <h1>Register to Participate</h1>
+            <form id="registration-form">
+                <label for="nickname">Enter your name or nickname:</label>
+                <input type="text" id="nickname" required>
+                <button type="submit">Register</button>
+            </form>
+            <div class="error-message" id="registration-error" style="display: none;"></div>
+        </div>
+
+        <div id="game-page" class="hidden">
+            <h1>Guess the Euro 2024 Game Results</h1>
+            <div id="game-list"></div>
+        </div>
     </div>
-    <footer>
-        <p>© 2024 Euro 2024 Guessing Game</p>
-    </footer>
-  <script>
-    const games = [
-        { team1: 'Germany', team2: 'France', date: '2024-06-14' },
-        { team1: 'Italy', team2: 'Spain', date: '2024-06-15' },
-        // Other game objects...
-    ];
 
-    const gameList = document.getElementById('game-list');
+    <script>
+        const games = [
+            { team1: 'Germany', team2: 'France', date: '2024-06-14' },
+            { team1: 'Italy', team2: 'Spain', date: '2024-06-15' },
+            { team1: 'Portugal', team2: 'Switzerland', date: '2024-06-16' },
+            { team1: 'England', team2: 'Croatia', date: '2024-06-17' },
+            { team1: 'Netherlands', team2: 'Ukraine', date: '2024-06-18' },
+            { team1: 'Belgium', team2: 'Russia', date: '2024-06-19' },
+            { team1: 'Austria', team2: 'North Macedonia', date: '2024-06-20' },
+            { team1: 'Denmark', team2: 'Finland', date: '2024-06-21' },
+            { team1: 'Czech Republic', team2: 'Scotland', date: '2024-06-22' },
+            { team1: 'Poland', team2: 'Slovakia', date: '2024-06-23' },
+            { team1: 'Spain', team2: 'Sweden', date: '2024-06-24' },
+            { team1: 'Hungary', team2: 'Portugal', date: '2024-06-25' },
+            { team1: 'France', team2: 'Germany', date: '2024-06-26' },
+            { team1: 'Italy', team2: 'Wales', date: '2024-06-27' },
+            { team1: 'Switzerland', team2: 'Turkey', date: '2024-06-28' },
+            { team1: 'Ukraine', team2: 'Austria', date: '2024-06-29' },
+            { team1: 'Netherlands', team2: 'North Macedonia', date: '2024-06-30' },
+            { team1: 'Russia', team2: 'Denmark', date: '2024-07-01' },
+            { team1: 'Finland', team2: 'Belgium', date: '2024-07-02' },
+            { team1: 'Croatia', team2: 'Czech Republic', date: '2024-07-03' },
+            { team1: 'England', team2: 'Scotland', date: '2024-07-04' },
+            { team1: 'Sweden', team2: 'Poland', date: '2024-07-05' },
+            { team1: 'Slovakia', team2: 'Spain', date: '2024-07-06' },
+            { team1: 'Portugal', team2: 'France', date: '2024-07-07' },
+            { team1: 'Germany', team2: 'Hungary', date: '2024-07-08' }
+        ];
 
-    const loadGuesses = () => {
-        const guesses = localStorage.getItem('guesses');
-        return guesses ? JSON.parse(guesses) : {};
-    };
+        const registrationPage = document.getElementById('registration-page');
+        const gamePage = document.getElementById('game-page');
+        const registrationForm = document.getElementById('registration-form');
+        const registrationError = document.getElementById('registration-error');
+        const gameList = document.getElementById('game-list');
 
-    const saveGuess = (game, score1, score2) => {
-        const guesses = loadGuesses();
-        guesses[`${game.team1} vs ${game.team2}`] = { score1, score2 };
-        localStorage.setItem('guesses', JSON.stringify(guesses));
-    };
+        const loadGuesses = () => {
+            const guesses = localStorage.getItem('guesses');
+            return guesses ? JSON.parse(guesses) : {};
+        };
 
-    const displayGuesses = () => {
-        const guesses = loadGuesses();
-        for (const game of games) {
-            const key = `${game.team1} vs ${game.team2}`;
-            if (guesses[key]) {
-                const gameDiv = document.querySelector(`.game[data-key="${key}"]`);
-                if (gameDiv) {
-                    const inputs = gameDiv.querySelectorAll('input');
-                    inputs[0].value = guesses[key].score1;
-                    inputs[1].value = guesses[key].score2;
+        const saveGuess = (game, score1, score2) => {
+            const guesses = loadGuesses();
+            guesses[`${game.team1} vs ${game.team2}`] = { score1, score2 };
+            localStorage.setItem('guesses', JSON.stringify(guesses));
+        };
+
+        const displayGuesses = () => {
+            const guesses = loadGuesses();
+            for (const game of games) {
+                const key = `${game.team1} vs ${game.team2}`;
+                if (guesses[key]) {
+                    const gameDiv = document.querySelector(`.game[data-key="${key}"]`);
+                    if (gameDiv) {
+                        const inputs = gameDiv.querySelectorAll('input');
+                        inputs[0].value = guesses[key].score1;
+                        inputs[1].value = guesses[key].score2;
+                    }
                 }
             }
-        }
-    };
+        };
 
-    const validateScores = (score1, score2) => {
-        if (isNaN(score1) || isNaN(score2) || score1 === '' || score2 === '') {
-            return 'Please enter valid numeric scores.';
-        }
-        if (score1 < 0 || score1 > 10 || score2 < 0 || score2 > 10) {
-            return 'Scores must be between 0 and 10.';
-        }
-        return null;
-    };
-
-    const getCountryCode = (countryName) => {
-        // Function to map country names to ISO 3166-1 alpha-2 codes
-        // Add more countries as needed
-        switch(countryName.toLowerCase()) {
-            case 'germany':
-                return 'de';
-            case 'france':
-                return 'fr';
-            case 'italy':
-                return 'it';
-            case 'spain':
-                return 'es';
-            // Add more cases for other countries as needed
-            default:
-                return 'unknown';
-        }
-    };
-
-    games.forEach(game => {
-        const gameDiv = document.createElement('div');
-        gameDiv.classList.add('game');
-        const gameKey = `${game.team1} vs ${game.team2}`;
-        gameDiv.setAttribute('data-key', gameKey);
-        gameDiv.innerHTML = `
-            <div><span class="flag-icon flag-icon-${getCountryCode(game.team1).toLowerCase()}"></span> ${game.team1} vs <span class="flag-icon flag-icon-${getCountryCode(game.team2).toLowerCase()}"></span> ${game.team2}</div>
-            <div>${game.date}</div>
-            <input type="text" placeholder="Score for ${game.team1}">
-            <input type="text" placeholder="Score for ${game.team2}">
-            <button>Submit Guess</button>
-            <div class="error-message" style="color: red; display: none;"></div>
-        `;
-        const button = gameDiv.querySelector('button');
-        button.addEventListener('click', () => {
-            const inputs = gameDiv.querySelectorAll('input');
-            const errorDiv = gameDiv.querySelector('.error-message');
-            const score1 = inputs[0].value;
-            const score2 = inputs[1].value;
-            const validationError = validateScores(score1, score2);
-            if (validationError) {
-                errorDiv.textContent = validationError;
-                errorDiv.style.display = 'block';
-            } else {
-                errorDiv.style.display = 'none';
-                saveGuess(game, score1, score2);
-                alert('Guess submitted!');
+        const validateScores = (score1, score2) => {
+            if (isNaN(score1) || isNaN(score2) || score1 === '' || score2 === '') {
+                return 'Please enter valid numeric scores.';
             }
-        });
-        gameList.appendChild(gameDiv);
-    });
+            if (score1 < 0 || score1 > 10 || score2 < 0 || score2 > 10) {
+                return 'Scores must be between 0 and 10.';
+            }
+            return null;
+        };
 
-    displayGuesses();
-</script>
+        const getCountryCode = (countryName) => {
+            // Function to map country names to ISO 3166-1 alpha-2 codes
+            // Add more countries as needed
+            switch(countryName.toLowerCase()) {
+                case 'germany':
+                    return 'de';
+                case 'france':
+                    return 'fr';
+                case 'italy':
+                    return 'it';
+                case 'spain':
+                    return 'es';
+                case 'portugal':
+                    return 'pt';
+                case 'switzerland':
+                    return 'ch';
+                case 'england':
+                    return 'gb';
+                case 'croatia':
+                    return 'hr';
+                case 'netherlands':
+                    return 'nl';
+                case 'ukraine':
+                    return 'ua';
+                case 'belgium':
+                    return 'be';
+                case 'russia':
+                    return 'ru';
+                case 'austria':
+                    return 'at';
+                case 'north macedonia':
+                    return 'mk';
+                case 'denmark':
+                    return 'dk';
+                case 'finland':
+                    return 'fi';
+                case 'czech republic':
+                    return 'cz';
+                case 'scotland':
+                    return 'gb-sct';
+                case 'poland':
+                    return 'pl';
+                case 'slovakia':
+                    return 'sk';
+                case 'sweden':
+                    return 'se';
+                case 'hungary':
+                    return 'hu';
+                case 'wales':
+                    return 'gb-wls';
+                case 'turkey':
+                    return 'tr';
+                default:
+                    return 'unknown';
+            }
+        };
 
-
-
-</body>
-</html>
+        games.forEach(game => {
+            const gameDiv = document.createElement('div');
+            gameDiv.classList.add('game');
+            const gameKey = `${game.team1} vs ${game.team2}`;
+            gameDiv.setAttribute('data-key', gameKey);
+            gameDiv.innerHTML = `
+                <div><span class="flag-icon flag-icon-${getCountryCode(game.team1).toLowerCase()}"></span> ${game.team1} vs <span class="flag-icon flag-icon-${getCountryCode(game.team2).toLowerCase()}"></span> ${game.team2}</div>
+                <div>${game.date}</div>
+                <input type="text" placeholder="Score for ${game.team1}">
+                <input type="text" placeholder="Score for ${game.team2}">
+                <button>Submit Guess</button>
+                <div class="error-message" style="color: red; display: none;"></div>
+            `;
+            const button = gameDiv.querySelector('button');
+            button.addEventListener('click', () =>
