@@ -13,9 +13,9 @@ module.exports = {
                 exclude: /node_modules/, // Exclude node_modules directory
                 use: {
                     loader: 'babel-loader' // Use babel-loader for .js files
-                        options: {
-                            presets: ['@babel/preset-env']
-                        }
+                      //  options: {
+                       //     presets: ['@babel/preset-env']
+                       // }
                 }
             },
             {
@@ -23,7 +23,7 @@ module.exports = {
                 use: [
                     'style-loader', // Inject CSS into DOM
                     'css-loader',   // Translate CSS into CommonJS
-                    'sass-loader'   // Compile Sass to CSS
+                  //  'sass-loader'   // Compile Sass to CSS
                 ]
             }
         ]
