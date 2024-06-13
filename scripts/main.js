@@ -15,12 +15,12 @@ document.addEventListener('DOMContentLoaded', () => {
         return guesses ? JSON.parse(guesses) : {};
     };
 
-    const saveGuess = (game, score1, score2) => {
-        const guesses = loadGuesses();
-        guesses[`${game.team1} vs ${game.team2}`] = { score1, score2 };
-        localStorage.setItem('guesses', JSON.stringify(guesses));
-        updateGroupTable(game, score1, score2);
-    };
+const saveGuess = (game, score1, score2) => {
+    const key = `${game.team1} vs ${game.team2}`;
+    const newGuesses = { ...loadGuesses(), [key]: { score1, score2 } };
+    localStorage.setItem('guesses', JSON.stringify(newGuesses));
+    updateGroupTable(game, score1, score2);
+};
 
     const displayGuesses = () => {
         const guesses = loadGuesses();
