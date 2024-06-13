@@ -4,6 +4,12 @@ export function handleRegistration() {
     const registrationPage = document.getElementById('registration-page');
     const gamePage = document.getElementById('game-page');
 
+      if (!registrationForm || !registrationError || !registrationPage || !gamePage) {
+        console.error('One or more elements are not found in the DOM');
+        return;
+    }
+
+    console.log('All required elements found in the DOM');
     registrationForm.addEventListener('submit', (event) => {
         event.preventDefault();
         const nickname = document.getElementById('nickname').value.trim();
