@@ -8,6 +8,7 @@ const games = [
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
+    handleRegistration();
     const gameList = document.getElementById('game-list');
 
     const loadGuesses = () => {
