@@ -1,4 +1,5 @@
-body {
+
+    body {
     font-family: Arial, sans-serif;
     background-image: url('https://assets-webp.khelnow.com/d7293de2fa93b29528da214253f1d8d0/news/uploads/2023/12/UEFA-Euro-2024.jpeg'); /* Replace with the actual URL of your background image */
     background-size: cover;
@@ -11,7 +12,7 @@ body {
 }
 
 .container {
-    max-width: 800px;
+    max-width: 1200px; /* Increased width to accommodate both sections */
     margin: 0 auto;
     padding: 20px;
     background: rgba(0, 0, 0, 0.8); /* Dimmed background */
@@ -56,6 +57,37 @@ button:hover {
     background-color: #45a049;
 }
 
+.main-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+#game-list {
+    flex: 2;
+}
+
+#group-table-container {
+    flex: 1;
+    margin-left: 20px;
+}
+
+.group-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.group-table th, .group-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.group-table th {
+    background-color: #4CAF50;
+    color: white;
+}
+
 .game {
     background: rgba(255, 255, 255, 0.1);
     padding: 15px;
@@ -81,7 +113,6 @@ button:hover {
     margin-right: 10px;
 }
 
-/* New CSS for the goal input fields */
 .goal-input {
     width: 40px; /* Adjust the width for 2 digits */
     text-align: center;
