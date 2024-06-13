@@ -1,3 +1,7 @@
+import { updateGroupTable } from './groupTable.js';
+
+// Remaining code stays the same...
+
 const games = [
     { team1: 'Germany', team2: 'France', date: '2024-06-14', group: 'A' },
     { team1: 'Italy', team2: 'Spain', date: '2024-06-15', group: 'A' },
