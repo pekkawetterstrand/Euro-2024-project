@@ -3,30 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Euro 2024 Game Results Guessing</title>
-    <link rel="stylesheet" href="styles/styles.css">
+    <title>Euro 2024 Guessing Game</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="registration-page" class="container">
-        <h1>Euro 2024 Game Results Guessing</h1>
+    <div class="container" id="registration-page">
+        <h1>Euro 2024 Guessing Game</h1>
         <form id="registration-form">
-            <label for="nickname">Enter your name or nickname:</label>
-            <input type="text" id="nickname" name="nickname" required>
+            <label for="nickname">Enter your nickname:</label>
+            <input type="text" id="nickname" required>
             <button type="submit">Submit</button>
-            <div id="registration-error" class="error-message" style="display: none;"></div>
+            <div id="registration-error" class="error-message hidden"></div>
         </form>
     </div>
 
-    <div id="game-page" class="container hidden">
-        <div class="main-content">
+    <div class="container hidden" id="game-page">
+        <h1>Guess the Results</h1>
+        <form id="game-form">
             <div id="game-list"></div>
-            <div id="group-table-container">
-                <h2>Group Standings</h2>
-                <div id="group-table"></div>
-            </div>
-        </div>
+            <button type="submit">Submit</button>
+        </form>
+        <div id="group-table-container"></div>
     </div>
 
-    <script src="dist/bundle.js"></script>
+    <script src="bundle.js"></script>
 </body>
 </html>
