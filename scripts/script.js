@@ -1,4 +1,5 @@
 import { updateGroupTable } from './groupTable.js';
+import { updateGroupTable } from './groupTable.js';
 
 const games = [
     { team1: 'Germany', team2: 'France', date: '2024-06-14', group: 'A' },
@@ -72,8 +73,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const gameKey = `${game.team1} vs ${game.team2}`;
         gameDiv.setAttribute('data-key', gameKey);
         gameDiv.innerHTML = `
-            <div><span class="flag-icon flag-icon-${getCountryCode(game.team1).toLowerCase()}"></span> ${game.team1} vs <span class="flag-icon flag-icon-${getCountryCode(game.team2).toLowerCase()}"></span> ${game.team2}</div>
-            <div>${game.date}</div>
+            <div>
+                <span class="flag-icon flag-icon-${getCountryCode(game.team1).toLowerCase()}"></span> ${game.team1} 
+                vs 
+                <span class="flag-icon flag-icon-${getCountryCode(game.team2).toLowerCase()}"></span> ${game.team2}
+                - ${game.date}
+            </div>
             <input type="text" class="goal-input" placeholder="Score for ${game.team1}">
             <input type="text" class="goal-input" placeholder="Score for ${game.team2}">
             <button>Submit Guess</button>
