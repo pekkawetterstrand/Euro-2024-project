@@ -93,10 +93,18 @@ button:hover {
     margin-bottom: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .game div {
     margin-bottom: 10px;
+}
+
+.game input {
+    width: 40px; /* Adjust the width for 2 digits */
+    text-align: center;
 }
 
 .error-message {
@@ -110,9 +118,4 @@ button:hover {
 
 .flag-icon {
     margin-right: 10px;
-}
-
-.goal-input {
-    width: 40px; /* Adjust the width for 2 digits */
-    text-align: center;
 }
