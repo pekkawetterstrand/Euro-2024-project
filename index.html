@@ -4,37 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Euro 2024 Game Results Guessing</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
-    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="dist/styles.css">
 </head>
 <body>
-    <div class="container">
-        <div id="registration-page">
-            <h1>Register to Participate</h1>
-            <form id="registration-form">
-                <label for="nickname">Enter your name or nickname:</label>
-                <input type="text" id="nickname" required>
-                <button type="submit">Register</button>
-            </form>
-            <div class="error-message" id="registration-error" style="display: none;"></div>
-        </div>
+    <div id="registration-page" class="container">
+        <h1>Euro 2024 Game Results Guessing</h1>
+        <form id="registration-form">
+            <label for="nickname">Enter your name or nickname:</label>
+            <input type="text" id="nickname" name="nickname" required>
+            <button type="submit">Submit</button>
+            <div id="registration-error" class="error-message" style="display: none;"></div>
+        </form>
+    </div>
 
-        <div id="game-page" class="hidden">
-            <h1>Guess the Euro 2024 Game Results</h1>
-            <div class="main-content">
-                <div id="game-list"></div>
-                <div id="group-table-container">
-                    <h2>Group Standings</h2>
-                    <div id="group-table">
-                        <!-- Group tables will be dynamically inserted here -->
-                    </div>
-                </div>
+    <div id="game-page" class="container hidden">
+        <div class="main-content">
+            <div id="game-list"></div>
+            <div id="group-table-container">
+                <h2>Group Standings</h2>
+                <div id="group-table"></div>
             </div>
         </div>
     </div>
 
-    <script type="module" src="scripts/script.js" defer></script>
-</body>
-</html>
+    <script src="dist/bundle.js"></script>
 </body>
 </html>
