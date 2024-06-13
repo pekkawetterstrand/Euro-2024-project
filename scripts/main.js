@@ -37,15 +37,19 @@ const saveGuess = (game, score1, score2) => {
         }
     };
 
-    const validateScores = (score1, score2) => {
-        if (isNaN(score1) || isNaN(score2) || score1 === '' || score2 === '') {
-            return 'Please enter valid numeric scores.';
-        }
-        if (score1 < 0 || score1 > 10 || score2 < 0 || score2 > 10) {
-            return 'Scores must be between 0 and 10.';
-        }
-        return null;
-    };
+const validateScores = (score1, score2) => {
+    const isValidNumber = (value) => !isNaN(value) && value !== '';
+    const isWithinRange = (value) => value >= 0 && value <= 10;
+
+    if (!isValidNumber(score1) || !isValidNumber(score2)) {
+        return 'Please enter valid numeric scores.';
+    }
+    if (!isWithinRange(score1) || !isWithinRange(score2)) {
+        return 'Scores must be between 0 and 10.';
+    }
+    return null;
+};
+
 
     const getCountryCode = (countryName) => {
         switch (countryName.toLowerCase()) {
