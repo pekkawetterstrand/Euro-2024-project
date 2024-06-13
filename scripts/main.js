@@ -1,5 +1,6 @@
+import games from './games.js';
+import { updateGroupTable, renderGroupTable } from './groupTable.js';
 import { handleRegistration } from './registration.js';
-import { updateGroupTable } from './groupTable.js';
 
 const games = [
     { team1: 'Germany', team2: 'France', date: '2024-06-14', group: 'A' },
