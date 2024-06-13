@@ -1,17 +1,13 @@
-import { updateGroupTable } from './groupTable.js';
+import { handleRegistration } from './registration.js';
 import { updateGroupTable } from './groupTable.js';
 
 const games = [
     { team1: 'Germany', team2: 'France', date: '2024-06-14', group: 'A' },
     { team1: 'Italy', team2: 'Spain', date: '2024-06-15', group: 'A' },
-    // Other game objects...
+    // Add more game objects as needed
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
-    const registrationPage = document.getElementById('registration-page');
-    const gamePage = document.getElementById('game-page');
-    const registrationForm = document.getElementById('registration-form');
-    const registrationError = document.getElementById('registration-error');
     const gameList = document.getElementById('game-list');
 
     const loadGuesses = () => {
@@ -103,25 +99,6 @@ document.addEventListener('DOMContentLoaded', () => {
         gameList.appendChild(gameDiv);
     });
 
-    // Check if a nickname is already stored and display the game page if it is
-    const storedNickname = localStorage.getItem('nickname');
-    if (storedNickname) {
-        registrationPage.classList.add('hidden');
-        gamePage.classList.remove('hidden');
-    }
-
     displayGuesses();
-
-    registrationForm.addEventListener('submit', (event) => {
-        event.preventDefault();
-        const nickname = document.getElementById('nickname').value.trim();
-        if (nickname) {
-            localStorage.setItem('nickname', nickname);
-            registrationPage.classList.add('hidden');
-            gamePage.classList.remove('hidden');
-        } else {
-            registrationError.textContent = 'Please enter a valid name or nickname.';
-            registrationError.style.display = 'block';
-        }
-    });
+    handleRegistration();
 });
