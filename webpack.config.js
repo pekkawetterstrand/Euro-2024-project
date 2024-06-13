@@ -13,6 +13,9 @@ module.exports = {
                 exclude: /node_modules/, // Exclude node_modules directory
                 use: {
                     loader: 'babel-loader' // Use babel-loader for .js files
+                        options: {
+                            presets: ['@babel/preset-env']
+                        }
                 }
             },
             {
