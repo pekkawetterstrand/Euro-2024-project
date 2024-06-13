@@ -10,6 +10,7 @@ export function handleRegistration() {
     }
 
     console.log('All required elements found in the DOM');
+    
     registrationForm.addEventListener('submit', (event) => {
         event.preventDefault();
         const nickname = document.getElementById('nickname').value.trim();
