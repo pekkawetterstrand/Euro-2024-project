@@ -1,9 +1,9 @@
 body {
     font-family: Arial, sans-serif;
-    background-image: url('https://assets-webp.khelnow.com/d7293de2fa93b29528da214253f1d8d0/news/uploads/2023/12/UEFA-Euro-2024.jpeg'); /* Replace with the actual URL of your background image */
+    background-image: url('../assets/images/background.jpg'); 
     background-size: cover;
     background-attachment: fixed;
-    background-position: center bottom; /* Adjusted to position the background */
+    background-position: center bottom; 
     background-repeat: no-repeat;
     color: white;
     margin: 0;
@@ -11,10 +11,10 @@ body {
 }
 
 .container {
-    max-width: 1200px; /* Increased width to accommodate both sections */
+    max-width: 1200px; 
     margin: 0 auto;
     padding: 20px;
-    background: rgba(0, 0, 0, 0.8); /* Dimmed background */
+    background: rgba(0, 0, 0, 0.8); 
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
@@ -103,7 +103,7 @@ button:hover {
 }
 
 .game input {
-    width: 40px; /* Adjust the width for 2 digits */
+    width: 40px; 
     text-align: center;
 }
 
