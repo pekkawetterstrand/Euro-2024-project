@@ -1,1 +1,27 @@
+{
+  "name": "euro-2024-guessing-game",
+  "version": "1.0.0",
+  "description": "Euro 2024 game results guessing web app",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production", // Script to build production bundle
+    "start": "webpack serve --open --mode development" // Script to start development server
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-loader": "^8.2.3", // Babel loader for JavaScript
+    "css-loader": "^6.5.1",    // CSS loader for Webpack
+    "style-loader": "^3.3.1", // Style loader for Webpack
+    "sass-loader": "^12.4.0",  // Sass loader for Webpack
+    "webpack": "^5.59.0",      // Webpack module bundler
+    "webpack-cli": "^4.9.1",   // Webpack CLI
+    "webpack-dev-server": "^4.7.4" // Webpack development server
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.7",  // Babel core
+    "@babel/preset-env": "^7.16.7" // Babel preset for environment
+  }
+}
 
